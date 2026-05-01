@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 10.6%;
+    --foreground: 0 0% 92%;
+
+    --card: 0 0% 13%;
+    --card-foreground: 0 0% 92%;
+
+    --popover: 0 0% 13%;
+    --popover-foreground: 0 0% 92%;
+
+    --primary: 270 91% 68%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 85%;
+
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 270 91% 68%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 270 91% 68%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 10.6%;
+    --sidebar-foreground: 0 0% 92%;
+    --sidebar-primary: 270 91% 68%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 18%;
+    --sidebar-accent-foreground: 0 0% 92%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 270 91% 68%;
+
+    --font-heading: 'Anton', sans-serif;
+    --font-body: 'Public Sans', sans-serif;
+
+    --glow-primary: 0 0 40px hsl(270 91% 68% / 0.3);
+    --gradient-primary: linear-gradient(135deg, hsl(270 91% 68%), hsl(290 80% 55%));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 30px hsl(270 91% 68% / 0.5);
+  }
+}
