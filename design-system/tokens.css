@@ -1,0 +1,479 @@
+:root {
+
+  /* --- Cores de fundo --- */
+  --color-bg:          hsl(0 0% 10.6%);   /* #1B1B1B - fundo principal */
+  --color-bg-card:     hsl(0 0% 13%);     /* #212121 - cards */
+  --color-bg-secondary:hsl(0 0% 18%);     /* #2E2E2E - seções alternadas */
+  --color-bg-muted:    hsl(0 0% 16%);     /* #292929 - muted / hover sutil */
+
+  /* --- Cores de texto --- */
+  --color-text:        hsl(0 0% 92%);     /* #EAEAEA - texto padrão */
+  --color-text-muted:  hsl(0 0% 55%);     /* #8C8C8C - descrições, captions */
+  --color-text-light:  hsl(0 0% 85%);     /* #D9D9D9 - subtítulos */
+  --color-text-white:  hsl(0 0% 100%);    /* #FFFFFF - texto sobre primário */
+
+  /* --- Cor primária (roxo vibrante) --- */
+  --color-primary:     hsl(270 91% 68%);  /* #9D5FE8 */
+  --color-primary-fg:  hsl(0 0% 100%);
+
+  /* --- Cor de acento (mesma do primário) --- */
+  --color-accent:      hsl(270 91% 68%);
+  --color-accent-fg:   hsl(0 0% 100%);
+
+  /* --- Cor de perigo / erro --- */
+  --color-destructive: hsl(0 84.2% 60.2%); /* #E74C3C */
+
+  /* --- Bordas e inputs --- */
+  --color-border:      hsl(0 0% 20%);     /* #333333 */
+  --color-input:       hsl(0 0% 20%);
+  --color-ring:        hsl(270 91% 68%);  /* foco — roxo */
+
+  /* --- Gradiente principal --- */
+  --gradient-primary:  linear-gradient(135deg, hsl(270 91% 68%), hsl(290 80% 55%));
+
+  /* --- Brilho (glow) --- */
+  --glow-primary:      0 0 40px hsl(270 91% 68% / 0.3);
+  --glow-text-primary: 0 0 30px hsl(270 91% 68% / 0.5);
+
+  /* --- Tipografia --- */
+  --font-heading: 'Anton', sans-serif;
+  --font-body:    'Public Sans', sans-serif;
+
+  /* --- Border-radius --- */
+  --radius-sm:  0.375rem;   /* 6px */
+  --radius-md:  0.625rem;   /* 10px */
+  --radius-lg:  0.75rem;    /* 12px — padrão */
+  --radius-xl:  1rem;       /* 16px */
+  --radius-full: 9999px;    /* pill / circular */
+
+  /* --- Espaçamento base (escala 4px) --- */
+  --space-1:  0.25rem;   /*  4px */
+  --space-2:  0.5rem;    /*  8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-8:  2rem;      /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-24: 6rem;      /* 96px  — padding de seção mobile */
+  --space-32: 8rem;      /* 128px — padding de seção desktop */
+
+  /* --- Transições --- */
+  --transition-fast:   150ms ease;
+  --transition-base:   300ms ease;
+  --transition-slow:   600ms ease;
+  --transition-bounce: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* --- Z-index --- */
+  --z-base:    0;
+  --z-overlay: 10;
+  --z-fixed:   50;
+  --z-modal:   100;
+
+  /* --- Container --- */
+  --container-max:     1280px;
+  --container-padding: var(--space-6); /* 24px lateral */
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  border-color: var(--color-border);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+/* ============================================================
+   UTILITÁRIOS REUTILIZÁVEIS
+   ============================================================ */
+
+/* Texto com gradiente roxo */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow em box-shadow */
+.glow {
+  box-shadow: var(--glow-primary);
+}
+
+/* Glow em texto */
+.glow-text {
+  text-shadow: var(--glow-text-primary);
+}
+
+/* Container centralizado */
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+/* Seção padrão */
+.section {
+  padding-block: var(--space-24);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--space-32);
+  }
+}
+
+/* ============================================================
+   COMPONENTES
+   ============================================================ */
+
+/* --- BOTÃO PRIMÁRIO --- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-8);
+  background-color: var(--color-primary);
+  color: var(--color-primary-fg);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: var(--glow-primary);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* --- BOTÃO SECUNDÁRIO (outline) --- */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-8);
+  background-color: transparent;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: border-color var(--transition-base), color var(--transition-base);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* --- BOTÃO SOCIAL (circular com ícone) --- */
+.btn-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;   /* 48px */
+  height: 3rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  background-color: transparent;
+  cursor: pointer;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.btn-social:hover {
+  transform: scale(1.1) translateY(-2px);
+  border-color: var(--color-primary);
+  box-shadow: var(--glow-primary);
+}
+
+.btn-social:active {
+  transform: scale(0.95);
+}
+
+/* --- CARD --- */
+.card {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  transition: border-color var(--transition-base);
+}
+
+.card:hover {
+  border-color: hsl(270 91% 68% / 0.5);
+}
+
+/* --- CARD DE PROJETO (com imagem e overlay) --- */
+.card-project {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 3 / 2;
+  cursor: pointer;
+}
+
+.card-project img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms ease;
+}
+
+.card-project:hover img {
+  transform: scale(1.1);
+}
+
+.card-project-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: hsl(0 0% 10.6% / 0.6);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-project:hover .card-project-overlay {
+  opacity: 1;
+}
+
+/* --- BADGE / TAG --- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  background-color: transparent;
+}
+
+/* --- BADGE PRIMÁRIO --- */
+.badge-primary {
+  border-color: hsl(270 91% 68% / 0.4);
+  color: var(--color-primary);
+  background-color: hsl(270 91% 68% / 0.1);
+}
+
+/* --- CARD DE FERRAMENTA / TOOL --- */
+.card-tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  text-align: center;
+  cursor: default;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.card-tool:hover {
+  transform: scale(1.05) translateY(-8px);
+  box-shadow: var(--glow-primary);
+  border-color: hsl(270 91% 68% / 0.5);
+}
+
+.card-tool .icon {
+  font-size: 3rem; /* 48px */
+}
+
+/* --- INPUTS / FORMULÁRIOS --- */
+.input,
+.textarea {
+  width: 100%;
+  padding: var(--space-3) var(--space-5);
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: var(--color-primary);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 10rem;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-fixed);
+  padding-block: var(--space-4);
+  padding-inline: var(--space-6);
+  transition: background-color var(--transition-base), backdrop-filter var(--transition-base);
+}
+
+.navbar.scrolled {
+  background-color: hsl(0 0% 10.6% / 0.9);
+  backdrop-filter: blur(12px);
+}
+
+/* --- OVERLAY DE FUNDO HERO --- */
+.hero-overlay {
+  background: linear-gradient(to bottom,
+    hsl(0 0% 10.6% / 0.6) 0%,
+    hsl(0 0% 10.6% / 0.8) 50%,
+    hsl(0 0% 10.6% / 1.0) 100%
+  );
+}
+
+/* ============================================================
+   ESCALA TIPOGRÁFICA
+   ============================================================ */
+
+.text-xs   { font-size: 0.75rem; }   /* 12px */
+.text-sm   { font-size: 0.875rem; }  /* 14px */
+.text-base { font-size: 1rem; }      /* 16px */
+.text-lg   { font-size: 1.125rem; }  /* 18px */
+.text-xl   { font-size: 1.25rem; }   /* 20px */
+.text-2xl  { font-size: 1.5rem; }    /* 24px */
+.text-3xl  { font-size: 1.875rem; }  /* 30px */
+.text-4xl  { font-size: 2.25rem; }   /* 36px */
+.text-5xl  { font-size: 3rem; }      /* 48px */
+.text-6xl  { font-size: 3.75rem; }   /* 60px */
+.text-7xl  { font-size: 4.5rem; }    /* 72px */
+.text-8xl  { font-size: 6rem; }      /* 96px */
+
+/* Label de seção (ex: "— SOBRE MIM") */
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+/* Título de seção */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+/* ============================================================
+   GRID SYSTEM (responsivo)
+   ============================================================ */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+.grid-tools {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .grid-2    { grid-template-columns: repeat(2, 1fr); gap: var(--space-16); }
+  .grid-3    { grid-template-columns: repeat(2, 1fr); }
+  .grid-tools{ grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid-3    { grid-template-columns: repeat(3, 1fr); }
+  .grid-tools{ grid-template-columns: repeat(5, 1fr); }
+}
+
+/* ============================================================
+   ANIMAÇÕES CSS (fallback sem Framer Motion)
+   ============================================================ */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-80px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up    { animation: fadeInUp    0.6s ease forwards; }
+.animate-fade-in-left  { animation: fadeInLeft  0.7s ease forwards; }
+.animate-fade-in-right { animation: fadeInRight 0.7s ease forwards; }
+.animate-scale-in      { animation: scaleIn     0.4s ease forwards; }
+.animate-slide-down    { animation: slideDown   0.6s ease forwards; }
+
+/* Delays utilitários */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.35s; }
+.delay-4 { animation-delay: 0.5s; }
+.delay-5 { animation-delay: 0.7s; }

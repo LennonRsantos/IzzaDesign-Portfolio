@@ -7,7 +7,9 @@ const tools = [
   { name: "Canva Pro", iconClass: "devicon-canva-original" }, 
   { name: "CapCut", iconClass: "hgi hgi-stroke hgi-rounded hgi-capcut" },
   { name: "Figma", iconClass: "devicon-figma-plain" },
+  { name: "Inteligência Artificial", iconClass: "hgi hgi-stroke hgi-rounded hgi-chat-gpt" },
 ];
+
 
 const Tools = () => {
   const ref = useRef(null);
